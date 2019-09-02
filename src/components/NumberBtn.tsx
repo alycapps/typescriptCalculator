@@ -1,7 +1,7 @@
 import React from "react";
 
 export interface Props {
-  number: number;
+  number: number | string;
   numberClick: any
 };
 

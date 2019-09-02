@@ -49,7 +49,7 @@ class App extends Component<{}, State> {
   };
 
   operatorClick = (e:any) => {
-    let displayNum: number = parseInt(this.state.display)
+    let displayNum: number = parseFloat(this.state.display)
     this.setState(
       {num1: displayNum},
       () => {
@@ -70,9 +70,17 @@ class App extends Component<{}, State> {
     this.setState({answerCalculated:false})
   };
 
+  backspaceClick = () => {
+    var newDisplayState: string = "";
+    for (let i=0; i<(this.state.display.length-1); i++) {
+      newDisplayState = newDisplayState + this.state.display[i]
+    }
+    this.setState({display: newDisplayState});
+  };
+
   equalClick = () => {
     console.log("equal clicked")
-    let displayNum: number = parseInt(this.state.display)
+    let displayNum: number = parseFloat(this.state.display)
     this.setState(
       {num2: displayNum},
       () => {
@@ -130,7 +138,7 @@ class App extends Component<{}, State> {
           <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-4">
-              <OtherBtn other={"<"} otherClick={this.clearClick}/>
+              <OtherBtn other={"<"} otherClick={this.backspaceClick}/>
               <OtherBtn other={"Clear"} otherClick={this.clearClick}/>
             </div>
             <div className="col-md-4"></div>
@@ -144,7 +152,7 @@ class App extends Component<{}, State> {
                 <NumberBtn number={number} numberClick={this.numberClick}/>
               ))}
               {/* final row */}
-              <OperatorBtn operator={"."} operatorClick={this.operatorClick}/>
+              <NumberBtn number={"."} numberClick={this.numberClick}/>
               <NumberBtn number={0} numberClick={this.numberClick}/>
               <OtherBtn other={"="} otherClick={this.equalClick}/>
             </div>
