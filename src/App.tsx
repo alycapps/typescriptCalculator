@@ -16,9 +16,10 @@ interface State {
     numbers: number[],
     operators: string[],
     display: string | number,
-    num1: number,
-    num2: number,
+    num1: null | number,
+    num2: null | number,
     operator: string,
+    operatorChosen: boolean,
     answer: number
 }
 
@@ -27,8 +28,8 @@ class App extends Component<{}, State> {
     numbers: [7,8,9,4,5,6,1,2,3],
     operators: ["%","X","-","+"],
     display: "",
-    num1: 0,
-    num2: 0,
+    num1: null,
+    num2: null,
     operatorChosen: false,
     operator: "",
     answer: 0
@@ -40,18 +41,27 @@ class App extends Component<{}, State> {
       return {display: prevState.display + val}
     }, 
      () => {(this.state.operatorChosen) ? (
-       console.log("update num1 here")
+       console.log("update num2 here")
       ) : (
-        console.log("update num2 here")
+        console.log("update num1 here")
       )}
     );
   };
+
   operatorClick = (e:any) => {
     console.log("operator clicked")
+    let displayNum = parseInt(this.state.display)
+    this.setState(
+      {num1: displayNum},
+      () => {
+        this.setState({display:""})
+      }
+    );
+    this.setState({operatorChosen:true})
     let val = e.target.value
-    this.setState({display:""})
-    // this.setState({operatorChosen:true)
+    this.setState({operator:val})
   };
+
   clearClick = () => {
     console.log("clear clicked")
   };
@@ -70,6 +80,7 @@ class App extends Component<{}, State> {
             <div className="col-md-4"></div>
             <div className="col-md-4 typed">
               {/* numbers already done */}
+              {this.state.num1} {this.state.operator} {this.state.num2}
             </div>
             <div className="col-md-4"></div>
           </div>
