@@ -4,15 +4,12 @@ import NumberBtn from "./components/NumberBtn";
 import OperatorBtn from "./components/OperatorBtn";
 import OtherBtn from "./components/OtherBtn";
 import InvisibleBtn from "./components/InvisibleBtn"
-// import { number } from 'prop-types';
-// import { thisExpression } from '@babel/types';
-// import { number } from 'prop-types';
-// import { render } from 'react-dom';
 
-// No Props
+// No Props on this level
 // export interface Props {
 // }
 
+//typing for state
 interface State {
     numbers: number[],
     operators: string[],
@@ -36,6 +33,8 @@ class App extends Component<{}, State> {
     answerCalculated: false
   };
 
+  // will update display state to include new value clicked
+  // will add value to num1 or num2 depending on if an operator has been chosen yet
   numberClick = (e:any) => {
     let val:string = e.target.value
     this.setState((prevState) => {
@@ -49,6 +48,10 @@ class App extends Component<{}, State> {
     );
   };
 
+  // will update num1 to display state
+  // will update display state to empty string
+  // will update operatorChosen
+  // will update operator
   operatorClick = (e:any) => {
     let displayNum: number = parseFloat(this.state.display)
     this.setState(
@@ -62,6 +65,7 @@ class App extends Component<{}, State> {
     this.setState({operator:val})
   };
 
+  //will set all states back to defaults
   clearClick = () => {
     this.setState({operatorChosen:false})
     this.setState({operator:""})
@@ -71,6 +75,8 @@ class App extends Component<{}, State> {
     this.setState({answerCalculated:false})
   };
 
+  // will remove last number clicked
+  // will not work for operators
   backspaceClick = () => {
     var newDisplayState: string = "";
     for (let i=0; i<(this.state.display.length-1); i++) {
@@ -79,6 +85,10 @@ class App extends Component<{}, State> {
     this.setState({display: newDisplayState});
   };
 
+  // will update num2 to display state
+  // will perform math based on operator chosen
+  //will update display with answer
+  //will update answerCalculated
   equalClick = () => {
     console.log("equal clicked")
     let displayNum: number = parseFloat(this.state.display)
@@ -115,7 +125,7 @@ class App extends Component<{}, State> {
         <h1>Practice Calulator</h1>
         <div className="container">
         
-
+        {/* row where num1 operator and num2 is displayed */}
         <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-4 typed">
@@ -125,10 +135,10 @@ class App extends Component<{}, State> {
             <div className="col-md-4"></div>
           </div>
 
+          {/* row where the form field is displayed */}
           <div className="row">
             <div className="col-md-4"></div>
-            <div className="col-md-4">
-              {/* typing location */}
+            <div className="col-md-4" style={style.noPadding}>
               <div className="form-group">
                 <input className="form-control" id="display" aria-describedby="calculatordisplay" placeholder={this.state.display} readOnly/>
               </div>
@@ -136,9 +146,10 @@ class App extends Component<{}, State> {
             <div className="col-md-4"></div>
           </div>
 
+          {/* row for backspace and clear */}
           <div className="row">
             <div className="col-md-4"></div>
-            <div className="col-md-3">
+            <div className="col-md-3" style={style.noPadding}>
               <InvisibleBtn />
               <OtherBtn other={"<"} otherClick={this.backspaceClick}/>
               <OtherBtn other={"Clear"} otherClick={this.clearClick}/>
@@ -149,30 +160,37 @@ class App extends Component<{}, State> {
           
           <div className="row">
             <div className="col-md-4"></div>
-            {/* numbers location */}
-            <div className="col-md-3">
+
+            {/* column for numbers location */}
+            <div className="col-md-3" style={style.noPadding}>
               {this.state.numbers.map(number => (
                 <NumberBtn number={number} numberClick={this.numberClick}/>
               ))}
+
               {/* final row */}
               <NumberBtn number={"."} numberClick={this.numberClick}/>
               <NumberBtn number={0} numberClick={this.numberClick}/>
               <OtherBtn other={"="} otherClick={this.equalClick}/>
             </div>
-            <div className="col-md-1">
+
+            {/* column for operators location */}
+            <div className="col-md-1" style={style.noPadding}>
               {this.state.operators.map(operator => (
                 <OperatorBtn operator={operator} operatorClick={this.operatorClick}/>
               ))}
             </div>
+
             <div className="col-md-4"></div>
           </div>
 
-          
         </div>
       </div>
     );
   }
-
 }
-
+const style ={
+  noPadding: {
+    padding: "0px"
+  }
+}
 export default App;
