@@ -15,28 +15,28 @@ import OtherBtn from "./components/OtherBtn";
 interface State {
     numbers: number[],
     operators: string[],
-    display: string | number,
-    num1: null | number,
-    num2: null | number,
+    display: string | number | undefined,
+    num1: number,
+    num2: number,
     operator: string,
     operatorChosen: boolean,
-    answer: number
+    answer: number | undefined | string
 }
 
 class App extends Component<{}, State> {
   state = {
     numbers: [7,8,9,4,5,6,1,2,3],
-    operators: ["%","X","-","+"],
+    operators: ["/","x","-","+"],
     display: "",
-    num1: null,
-    num2: null,
+    num1: 0,
+    num2: 0,
     operatorChosen: false,
     operator: "",
     answer: 0
   };
 
   numberClick = (e:any) => {
-    let val = e.target.value
+    let val:string = e.target.value
     this.setState((prevState) => {
       return {display: prevState.display + val}
     }, 
@@ -49,8 +49,7 @@ class App extends Component<{}, State> {
   };
 
   operatorClick = (e:any) => {
-    console.log("operator clicked")
-    let displayNum = parseInt(this.state.display)
+    let displayNum: number = parseInt(this.state.display)
     this.setState(
       {num1: displayNum},
       () => {
@@ -58,15 +57,44 @@ class App extends Component<{}, State> {
       }
     );
     this.setState({operatorChosen:true})
-    let val = e.target.value
+    let val:string = e.target.value
     this.setState({operator:val})
   };
 
   clearClick = () => {
-    console.log("clear clicked")
+    this.setState({operatorChosen:false})
+    this.setState({operator:""})
+    this.setState({num1:0})
+    this.setState({num2:0})
+    this.setState({display:""})
   };
+
   equalClick = () => {
     console.log("equal clicked")
+    let displayNum: number = parseInt(this.state.display)
+    this.setState(
+      {num2: displayNum},
+      () => {
+        let answerVar: number | string;
+        switch(this.state.operator) {
+          case "/":
+            answerVar = this.state.num1 / this.state.num2;
+            break;
+          case "x":
+            answerVar = this.state.num1 * this.state.num2;
+            break;
+          case "-":
+            answerVar = this.state.num1 - this.state.num2;
+            break;
+          case "+":
+            answerVar = this.state.num1 + this.state.num2;
+            break;
+          default:
+            answerVar = "something went wrong"
+        }
+        this.setState({display:answerVar})
+      }
+    );
   };
 
   public render() {
@@ -80,7 +108,8 @@ class App extends Component<{}, State> {
             <div className="col-md-4"></div>
             <div className="col-md-4 typed">
               {/* numbers already done */}
-              {this.state.num1} {this.state.operator} {this.state.num2}
+              {(this.state.operatorChosen) ? (this.state.num1) : ("")}
+              {/* {(this.state.answer) ? (this.state.num2) : ("")} */}
             </div>
             <div className="col-md-4"></div>
           </div>
