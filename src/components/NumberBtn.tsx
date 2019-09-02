@@ -6,11 +6,15 @@ export interface Props {
 };
 
 const NumberBtn = (props: Props) => (
-     <span className="col-md-1">
-      <button value={props.number} type="button" className="btn btn-secondary" onClick={props.numberClick}>
+    //  <span className="col-md-1" style={style}>
+      <button value={props.number} type="button" className="btn btn-secondary" onClick={props.numberClick} style={style} >
         {props.number}
       </button>
-    </span>
+    // </span>
 );
 
+const style = {
+  width: "33%",
+  padding: "0"
+}
 export default NumberBtn;

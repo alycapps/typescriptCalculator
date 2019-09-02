@@ -3,6 +3,7 @@ import './App.css';
 import NumberBtn from "./components/NumberBtn";
 import OperatorBtn from "./components/OperatorBtn";
 import OtherBtn from "./components/OtherBtn";
+import InvisibleBtn from "./components/InvisibleBtn"
 // import { number } from 'prop-types';
 // import { thisExpression } from '@babel/types';
 // import { number } from 'prop-types';
@@ -137,10 +138,12 @@ class App extends Component<{}, State> {
 
           <div className="row">
             <div className="col-md-4"></div>
-            <div className="col-md-4">
+            <div className="col-md-3">
+              <InvisibleBtn />
               <OtherBtn other={"<"} otherClick={this.backspaceClick}/>
               <OtherBtn other={"Clear"} otherClick={this.clearClick}/>
             </div>
+            <div className="col-md-1"></div>
             <div className="col-md-4"></div>
           </div>
           
