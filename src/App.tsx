@@ -20,7 +20,7 @@ interface State {
     num2: number,
     operator: string,
     operatorChosen: boolean,
-    answer: number | undefined | string
+    answerCalculated: boolean
 }
 
 class App extends Component<{}, State> {
@@ -32,7 +32,7 @@ class App extends Component<{}, State> {
     num2: 0,
     operatorChosen: false,
     operator: "",
-    answer: 0
+    answerCalculated: false
   };
 
   numberClick = (e:any) => {
@@ -67,6 +67,7 @@ class App extends Component<{}, State> {
     this.setState({num1:0})
     this.setState({num2:0})
     this.setState({display:""})
+    this.setState({answerCalculated:false})
   };
 
   equalClick = () => {
@@ -75,24 +76,26 @@ class App extends Component<{}, State> {
     this.setState(
       {num2: displayNum},
       () => {
-        let answerVar: number | string;
+        let answer: number | string;
         switch(this.state.operator) {
           case "/":
-            answerVar = this.state.num1 / this.state.num2;
+            answer = this.state.num1 / this.state.num2;
             break;
           case "x":
-            answerVar = this.state.num1 * this.state.num2;
+            answer = this.state.num1 * this.state.num2;
             break;
           case "-":
-            answerVar = this.state.num1 - this.state.num2;
+            answer = this.state.num1 - this.state.num2;
             break;
           case "+":
-            answerVar = this.state.num1 + this.state.num2;
+            answer = this.state.num1 + this.state.num2;
             break;
           default:
-            answerVar = "something went wrong"
+            answer = "something went wrong"
         }
-        this.setState({display:answerVar})
+        this.setState({display:answer})
+        this.setState({answerCalculated:true})
+
       }
     );
   };
@@ -107,9 +110,8 @@ class App extends Component<{}, State> {
         <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-4 typed">
-              {/* numbers already done */}
-              {(this.state.operatorChosen) ? (this.state.num1) : ("")}
-              {/* {(this.state.answer) ? (this.state.num2) : ("")} */}
+              {(this.state.operatorChosen) ? (<span>{this.state.num1} {this.state.operator}</span>) : ("")}
+              {(this.state.answerCalculated) ? (<span> {this.state.num2}</span>) : ("")}
             </div>
             <div className="col-md-4"></div>
           </div>
