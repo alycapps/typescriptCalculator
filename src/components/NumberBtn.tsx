@@ -5,9 +5,11 @@ export interface Props {
 };
 
 const NumberBtn = (props: Props) => (
-    <button type="button" className="btn btn-secondary">
-      {props.number}
-    </button>
+     <span className="col-md-1">
+      <button value={props.number} type="button" className="btn btn-secondary">
+        {props.number}
+      </button>
+    </span>
 );
 
 export default NumberBtn;
