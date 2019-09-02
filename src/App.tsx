@@ -19,7 +19,7 @@ interface State {
     operator: string,
     operatorChosen: boolean,
     answerCalculated: boolean
-}
+};
 
 class App extends Component<{}, State> {
   state = {
@@ -187,10 +187,12 @@ class App extends Component<{}, State> {
       </div>
     );
   }
-}
+};
+
 const style ={
   noPadding: {
     padding: "0px"
   }
-}
+};
+
 export default App;

@@ -10,6 +10,7 @@ const OtherBtn = (props: Props) => (
         {props.other}
       </button>
 );
+
 const style = {
   width: "33%",
   padding: "0",

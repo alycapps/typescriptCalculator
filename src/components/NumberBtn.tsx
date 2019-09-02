@@ -6,11 +6,9 @@ export interface Props {
 };
 
 const NumberBtn = (props: Props) => (
-    //  <span className="col-md-1" style={style}>
       <button value={props.number} type="button" className="btn btn-secondary" onClick={props.numberClick} style={style} >
         {props.number}
       </button>
-    // </span>
 );
 
 const style = {
