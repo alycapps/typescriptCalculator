@@ -2,7 +2,7 @@ import React from "react";
 
 export interface Props {
   number: number | string;
-  numberClick: any
+  numberClick: (e: any) => void
 };
 
 const NumberBtn = (props: Props) => (

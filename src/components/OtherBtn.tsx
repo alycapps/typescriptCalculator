@@ -2,7 +2,7 @@ import React from "react";
 
 export interface Props {
   other: string;
-  otherClick: any
+  otherClick: (e: any) => void
 };
 
 const OtherBtn = (props: Props) => (

@@ -35,7 +35,8 @@ class App extends Component<{}, State> {
 
   // will update display state to include new value clicked
   // will add value to num1 or num2 depending on if an operator has been chosen yet
-  numberClick = (e:any) => {
+  numberClick = (e: any) => {
+    console.log(e);
     let val:string = e.target.value
     this.setState((prevState) => {
       return {display: prevState.display + val}
@@ -87,8 +88,8 @@ class App extends Component<{}, State> {
 
   // will update num2 to display state
   // will perform math based on operator chosen
-  //will update display with answer
-  //will update answerCalculated
+  // will update display with answer
+  // will update answerCalculated
   equalClick = () => {
     console.log("equal clicked")
     let displayNum: number = parseFloat(this.state.display)
@@ -122,7 +123,7 @@ class App extends Component<{}, State> {
   public render() {
     return (
       <div className="App">
-        <h1>Practice Calulator</h1>
+        <h1>Typescript Calulator</h1>
         <div className="container">
         
         {/* row where num1 operator and num2 is displayed */}
