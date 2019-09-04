@@ -36,17 +36,10 @@ class App extends Component<{}, State> {
   // will update display state to include new value clicked
   // will add value to num1 or num2 depending on if an operator has been chosen yet
   numberClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    console.log(e);
     let val:string = e.currentTarget.value
     this.setState((prevState) => {
       return {display: prevState.display + val}
-    }, 
-     () => {(this.state.operatorChosen) ? (
-       console.log("update num2 here")
-      ) : (
-        console.log("update num1 here")
-      )}
-    );
+    });
   };
 
   // will update num1 to display state
@@ -63,7 +56,6 @@ class App extends Component<{}, State> {
     );
     this.setState({operatorChosen:true})
     let val:string = e.currentTarget.value
-    console.log(val);
     this.setState({operator:val})
   };
 
@@ -92,7 +84,6 @@ class App extends Component<{}, State> {
   // will update display with answer
   // will update answerCalculated
   equalClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    console.log("equal clicked")
     let displayNum: number = parseFloat(this.state.display)
     this.setState(
       {num2: displayNum},
@@ -116,7 +107,6 @@ class App extends Component<{}, State> {
         }
         this.setState({display:answer})
         this.setState({answerCalculated:true})
-
       }
     );
   };

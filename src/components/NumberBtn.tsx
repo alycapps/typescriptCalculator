@@ -14,6 +14,6 @@ const NumberBtn = (props: Props) => (
 const style = {
   width: "33%",
   padding: "0"
-}
+};
 
 export default NumberBtn;
