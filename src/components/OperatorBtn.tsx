@@ -2,7 +2,7 @@ import React from "react";
  
 export interface Props {
   operator: string,
-  operatorClick: (e: any) => void
+  operatorClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const OperatorBtn = (props: Props) => (

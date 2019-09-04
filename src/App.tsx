@@ -53,7 +53,7 @@ class App extends Component<{}, State> {
   // will update display state to empty string
   // will update operatorChosen
   // will update operator
-  operatorClick = (e: any): void => {
+  operatorClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     let displayNum: number = parseFloat(this.state.display)
     this.setState(
       {num1: displayNum},
@@ -62,7 +62,7 @@ class App extends Component<{}, State> {
       }
     );
     this.setState({operatorChosen:true})
-    let val:string = e.target.value
+    let val:string = e.currentTarget.value
     console.log(val);
     this.setState({operator:val})
   };
