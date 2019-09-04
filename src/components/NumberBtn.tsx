@@ -2,7 +2,7 @@ import React from "react";
 
 export interface Props {
   number: number | string;
-  numberClick: (e: any) => any
+  numberClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 
 const NumberBtn = (props: Props) => (

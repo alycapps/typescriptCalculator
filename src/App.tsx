@@ -35,9 +35,9 @@ class App extends Component<{}, State> {
 
   // will update display state to include new value clicked
   // will add value to num1 or num2 depending on if an operator has been chosen yet
-  numberClick = (e: any): any => {
-    console.log(e.currentTarget, "e");
-    let val:string = e.target.value;
+  numberClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    console.log(e);
+    let val:string = e.currentTarget.value
     this.setState((prevState) => {
       return {display: prevState.display + val}
     }, 
@@ -63,6 +63,7 @@ class App extends Component<{}, State> {
     );
     this.setState({operatorChosen:true})
     let val:string = e.target.value
+    console.log(val);
     this.setState({operator:val})
   };
 
