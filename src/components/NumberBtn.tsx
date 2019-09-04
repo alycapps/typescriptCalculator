@@ -5,7 +5,7 @@ export interface Props {
   numberClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 
-const NumberBtn = (props: Props) => (
+const NumberBtn: React.FunctionComponent<Props> = (props)  => (
       <button value={props.number} type="button" className="btn btn-secondary" onClick={props.numberClick} style={style} >
         {props.number}
       </button>
