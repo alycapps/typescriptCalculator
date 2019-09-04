@@ -14,5 +14,6 @@ const OperatorBtn = (props: Props) => (
 const style = {
   width: "100%",
   padding: "0",
-}
+};
+
 export default OperatorBtn;

@@ -2,7 +2,7 @@ import React from "react";
 
 export interface Props {
   other: string;
-  otherClick: (e: any) => void
+  otherClick: (e: React.MouseEvent<HTMLButtonElement>) => void
 };
 
 const OtherBtn = (props: Props) => (
@@ -14,5 +14,6 @@ const OtherBtn = (props: Props) => (
 const style = {
   width: "33%",
   padding: "0",
-}
+};
+
 export default OtherBtn;

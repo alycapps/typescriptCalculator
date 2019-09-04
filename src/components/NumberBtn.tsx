@@ -2,7 +2,7 @@ import React from "react";
 
 export interface Props {
   number: number | string;
-  numberClick: (e: any) => void
+  numberClick: (e: any) => any
 };
 
 const NumberBtn = (props: Props) => (
@@ -15,4 +15,5 @@ const style = {
   width: "33%",
   padding: "0"
 }
+
 export default NumberBtn;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import './App.css';
 import NumberBtn from "./components/NumberBtn";
 import OperatorBtn from "./components/OperatorBtn";
@@ -35,9 +35,9 @@ class App extends Component<{}, State> {
 
   // will update display state to include new value clicked
   // will add value to num1 or num2 depending on if an operator has been chosen yet
-  numberClick = (e: any) => {
-    console.log(e);
-    let val:string = e.target.value
+  numberClick = (e: any): any => {
+    console.log(e.currentTarget, "e");
+    let val:string = e.target.value;
     this.setState((prevState) => {
       return {display: prevState.display + val}
     }, 
@@ -53,7 +53,7 @@ class App extends Component<{}, State> {
   // will update display state to empty string
   // will update operatorChosen
   // will update operator
-  operatorClick = (e:any) => {
+  operatorClick = (e: any): void => {
     let displayNum: number = parseFloat(this.state.display)
     this.setState(
       {num1: displayNum},
@@ -67,7 +67,7 @@ class App extends Component<{}, State> {
   };
 
   //will set all states back to defaults
-  clearClick = () => {
+  clearClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     this.setState({operatorChosen:false})
     this.setState({operator:""})
     this.setState({num1:0})
@@ -78,7 +78,7 @@ class App extends Component<{}, State> {
 
   // will remove last number clicked
   // will not work for operators
-  backspaceClick = () => {
+  backspaceClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     var newDisplayState: string = "";
     for (let i=0; i<(this.state.display.length-1); i++) {
       newDisplayState = newDisplayState + this.state.display[i]
@@ -90,7 +90,7 @@ class App extends Component<{}, State> {
   // will perform math based on operator chosen
   // will update display with answer
   // will update answerCalculated
-  equalClick = () => {
+  equalClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     console.log("equal clicked")
     let displayNum: number = parseFloat(this.state.display)
     this.setState(
