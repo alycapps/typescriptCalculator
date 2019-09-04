@@ -72,7 +72,7 @@ class App extends Component<{}, State> {
   // will remove last number clicked
   // will not work for operators
   backspaceClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
-    var newDisplayState: string = "";
+    let newDisplayState: string = "";
     for (let i=0; i<(this.state.display.length-1); i++) {
       newDisplayState = newDisplayState + this.state.display[i]
     }
