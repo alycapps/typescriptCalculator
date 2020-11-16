@@ -156,7 +156,7 @@ class App extends Component<{}, State> {
             {/* column for numbers location */}
             <div className="col-md-3" style={style.noPadding}>
               {this.state.numbers.map(number => (
-                <NumberBtn number={number} numberClick={this.numberClick}/>
+                <NumberBtn key={number} number={number} numberClick={this.numberClick}/>
               ))}
 
               {/* final row */}
@@ -168,7 +168,7 @@ class App extends Component<{}, State> {
             {/* column for operators location */}
             <div className="col-md-1" style={style.noPadding}>
               {this.state.operators.map(operator => (
-                <OperatorBtn operator={operator} operatorClick={this.operatorClick}/>
+                <OperatorBtn key={operator} operator={operator} operatorClick={this.operatorClick}/>
               ))}
             </div>
 
