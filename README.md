@@ -1,3 +1,6 @@
+This was a simple project to practice using typescript and react.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
