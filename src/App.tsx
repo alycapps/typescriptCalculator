@@ -72,6 +72,7 @@ class App extends Component<{}, State> {
     this.setState({operator:""})
     this.setState({num1:0})
     this.setState({num2:0})
+    this.setState({numArray:[]})
     this.setState({display:""})
     this.setState({answerCalculated:false})
   };
