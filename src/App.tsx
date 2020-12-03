@@ -16,6 +16,7 @@ interface State {
     display: string | number | undefined,
     num1: number,
     num2: number,
+    numArray: number[],
     operator: string,
     operatorChosen: boolean,
     answerCalculated: boolean
@@ -28,6 +29,7 @@ class App extends Component<{}, State> {
     display: "",
     num1: 0,
     num2: 0,
+    numArray: [],
     operatorChosen: false,
     operator: "",
     answerCalculated: false
@@ -48,11 +50,16 @@ class App extends Component<{}, State> {
   // will update operator
   operatorClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     let displayNum: number = parseFloat(this.state.display)
+    //TO BE DELETED
     this.setState(
       {num1: displayNum},
       () => {
         this.setState({display:""})
       }
+    );
+    // new array for numbers
+    this.setState({ numArray: [...this.state.numArray, displayNum] }, 
+      ()=> { console.log("hello", this.state.numArray)}
     );
     this.setState({operatorChosen:true})
     let val:string = e.currentTarget.value
